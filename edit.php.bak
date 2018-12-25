@@ -1,0 +1,72 @@
+<?php
+@extract($_GET);
+@extract($_POST);
+@extract($_SERVER);
+
+include "db_connect.php";
+
+$sql = "SELECT * from T_Board where Uid=$Uid";
+
+//echo $sql;
+
+
+$result=$conn->query($sql);
+
+	if ($result) {
+	
+		$row=$result->fetch_assoc();
+
+	}
+
+?>
+
+
+
+<style>
+ td, input{font-size:9pt}
+</style>
+<center>
+<br>
+⊙&nbsp;&nbsp;<font size=5 face="sj소주2" color=#aa3366><b>PHP MySQL 기본게시판 - 수정</b></font>&nbsp;&nbsp;⊙
+<br>
+<form action="editok.php?Uid=<?=$row["Uid"]?>" method=post >
+	<table width=600 cellpadding=2 cellspacing=1 bgcolor=#336699>
+		<tr>
+			<td align=center height=20><font color="#f2ffff">글 수 정 하 기</font>
+		</tr>
+		<tr>
+			<td bgcolor=#f2ffff>
+				<table width="100%">
+					<tr>
+						<td align=right width="100">이름&nbsp;&nbsp;
+						<td><input type=text name=Name size=20 maxlength=10 value="<?=$row["Name"]?>">
+					</tr>
+					<tr>
+						<td align=right>이메일&nbsp;&nbsp;
+						<td><input type=text name=Email size=20 maxlength=30 value="<?=$row["Email"]?>">
+						</tr>
+					<tr>
+						<td align=right>비밀번호&nbsp;&nbsp;
+						<td><input type=password name=Pass size=20 maxlength=10> (비밀번호가 일치해야 수정 가능합니다.)
+					</tr>
+					<tr>
+						<td align=right>제목&nbsp;&nbsp;
+						<td><input type=text name=Subject size=70 maxlength=40 value="<?=$row["Subject"]?>">
+					</tr>
+					<tr>
+						<td align=right>내용&nbsp;&nbsp;
+						<td><textarea name=Memo cols=50 rows=15 ><?=$row["Memo"]?></textarea>
+					</tr>
+					<tr>
+						<td colspan=2 align=center height=30><input type=submit value=' 저장하기 '>
+							&nbsp;&nbsp;<input type=reset value=' 다시쓰기 '>
+							&nbsp;&nbsp;<input type=button value=' 이전 ' onclick="history.back(1)">
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</form>
+</center>
+

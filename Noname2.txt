@@ -1,0 +1,12 @@
+create table T_Board(
+Uid INT AUTO_INCREMENT ,
+Name VARCHAR(20) not null,
+Email VARCHAR(30) not null,
+Pass VARCHAR(20) not null,
+Subject VARCHAR(70) not null,
+Memo TEXT not null,
+RegDate DATETIME not null,
+Ip VARCHAR(15) not null,
+ViewCount INT not null,
+primary key(Uid)
+);

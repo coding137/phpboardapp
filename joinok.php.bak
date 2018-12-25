@@ -1,0 +1,41 @@
+<?php
+	$servername = "localhost";
+	$username = "wilson";
+	$password = "1234";
+	$dbname = "php_lecture";
+
+	// Create connection
+	$conn = new mysqli($servername, $username, $password, $dbname);
+	// Check connection
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	} 
+
+	$sql = "INSERT INTO t_member (Name, Id, Pass, Email, Memo)
+	VALUES ('$_POST[Name]', '$_POST[Id]', '$_POST[Pass]','$_POST[Email]','$_POST[Memo]')";
+
+	if ($conn->query($sql) === TRUE) {
+		echo "<script>alert('회원가입 성공')</script>";
+	} else {
+		echo "<script>alert('회원가입 실패')</script>";
+	}
+
+	$conn->close();
+?>
+
+<!--
+ Uid   | int(11)
+ Name  | varchar(20)
+ Id    | varchar(20)
+ Pass  | varchar(20)
+ Email | varchar(20)
+ Memo  | text
+
+ insert into t_member(Name,Id,Pass,Email,Memo)
+values('luke','cake','double','cheese','burger');
+-->
+
+
+	<script>
+	location.href='join.php';
+	</script>

@@ -1,0 +1,2 @@
+<a href="read.php?Uid=<?=$row["Uid"]?>"><?=$row["Uid"]?></a>
+<a href="read.php?Uid=<?=$row["Uid"]?>"><?=strip_tags($row["Subject"],'<b><i>');?></a>
